@@ -11,4 +11,25 @@ public class CalculationService implements CalculationServiceRemote, Calculation
 		return a + b;
 	}
 
+	@Override
+	public Integer multiply(Integer a, Integer b) {
+		return a * b;
+	}
+
+	@Override
+	public Integer substract(Integer a, Integer b) {
+		return a - b;
+	}
+
+	@Override
+	public Integer divide(Integer a, Integer b) {
+		Integer result = null;
+		if (b != 0) {
+			result = (a / b);
+		} else {
+			System.out.println("error number given = 0");
+		}
+		return result;
+	}
+
 }
