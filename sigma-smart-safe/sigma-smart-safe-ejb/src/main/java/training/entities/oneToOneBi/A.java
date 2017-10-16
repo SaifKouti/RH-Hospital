@@ -1,7 +1,6 @@
-package persistence;
+package training.entities.oneToOneBi;
 
 import java.io.Serializable;
-import java.lang.Integer;
 import javax.persistence.*;
 
 /**
@@ -14,18 +13,26 @@ public class A implements Serializable {
 
 	   
 	@Id
-	private Integer id;
+	private int idA;
+	@OneToOne
+	private B b;
 	private static final long serialVersionUID = 1L;
 
 	public A() {
 		super();
 	}   
-	public Integer getId() {
-		return this.id;
+	public int getIdA() {
+		return this.idA;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdA(int idA) {
+		this.idA = idA;
+	}
+	public B getB() {
+		return b;
+	}
+	public void setB(B b) {
+		this.b = b;
 	}
    
 }
