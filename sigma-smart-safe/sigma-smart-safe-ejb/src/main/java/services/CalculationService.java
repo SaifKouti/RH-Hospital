@@ -22,10 +22,10 @@ public class CalculationService implements CalculationServiceRemote, Calculation
 	}
 
 	@Override
-	public Integer divide(Integer a, Integer b) {
-		Integer result = null;
+	public Double divide(Integer a, Integer b) {
+		Double result = null;
 		if (b != 0) {
-			result = (a / b);
+			result = (new Double(a)) / (new Double(b));
 		} else {
 			System.out.println("error number given = 0");
 		}

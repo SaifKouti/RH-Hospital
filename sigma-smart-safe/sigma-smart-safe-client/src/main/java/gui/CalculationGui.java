@@ -106,22 +106,26 @@ public class CalculationGui extends JFrame {
 		JButton button_4 = new JButton("=");
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (operationSelected.equalsIgnoreCase("+")) {
+				System.out.println(operationSelected);
+				switch (operationSelected) {
+				case "+":
 					lblNewLabel.setText(String.valueOf(calculationServiceRemote
 							.sum(Integer.valueOf(textField.getText()), Integer.valueOf(textField_1.getText()))));
-				}
-				if (operationSelected.equalsIgnoreCase("-")) {
+					break;
+				case "-":
 					lblNewLabel.setText(String.valueOf(calculationServiceRemote
 							.substract(Integer.valueOf(textField.getText()), Integer.valueOf(textField_1.getText()))));
-				}
-				if (operationSelected.equalsIgnoreCase("/")) {
+					break;
+				case "/":
 					lblNewLabel.setText(String.valueOf(calculationServiceRemote
 							.divide(Integer.valueOf(textField.getText()), Integer.valueOf(textField_1.getText()))));
-				}
-				else {
+					break;
+				case "*":
 					lblNewLabel.setText(String.valueOf(calculationServiceRemote
 							.multiply(Integer.valueOf(textField.getText()), Integer.valueOf(textField_1.getText()))));
+				
 				}
+
 
 			}
 		});

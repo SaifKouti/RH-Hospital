@@ -11,6 +11,6 @@ public interface CalculationServiceRemote {
 
 	Integer substract(Integer a, Integer b);
 
-	Integer divide(Integer a, Integer b);
+	Double divide(Integer a, Integer b);
 
 }
