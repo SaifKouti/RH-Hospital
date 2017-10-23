@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import persistence.Equipement;
+import persistence.Room;
 import persistence.User;
 
 @Remote
-public interface UserManagementRemote {
+public interface BasicOpsRemote {
 	void addUser(User user);
 
 	void updateUser(User user);
@@ -19,4 +21,13 @@ public interface UserManagementRemote {
 	User findUserById(int id);
 
 	List<User> findAllUsers();
+
+	void saveOrUpdateRoom(Room room);
+
+	Room findRoomById(int id);
+
+	void saveOrUpdateEqipement(Equipement equipement);
+
+	Equipement findEquipementById(int id);
+
 }

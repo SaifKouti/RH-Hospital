@@ -7,21 +7,24 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import persistence.Equipement;
+import persistence.Room;
 import persistence.User;
 
 /**
- * Session Bean implementation class UserManagement
+ * Session Bean implementation class BasicOps
  */
 @Stateless
-public class UserManagement implements UserManagementRemote, UserManagementLocal {
-	@PersistenceContext
-	private EntityManager entityManager;
+public class BasicOps implements BasicOpsRemote, BasicOpsLocal {
 
 	/**
 	 * Default constructor.
 	 */
-	public UserManagement() {
+	public BasicOps() {
 	}
+
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	@Override
 	public void addUser(User user) {
@@ -54,6 +57,26 @@ public class UserManagement implements UserManagementRemote, UserManagementLocal
 		String jpql = "SELECT u FROM User u";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
+	}
+
+	@Override
+	public Room findRoomById(int id) {
+		return entityManager.find(Room.class, id);
+	}
+
+	@Override
+	public Equipement findEquipementById(int id) {
+		return entityManager.find(Equipement.class, id);
+	}
+
+	@Override
+	public void saveOrUpdateRoom(Room room) {
+		entityManager.merge(room);
+	}
+
+	@Override
+	public void saveOrUpdateEqipement(Equipement equipement) {
+		entityManager.merge(equipement);
 	}
 
 }

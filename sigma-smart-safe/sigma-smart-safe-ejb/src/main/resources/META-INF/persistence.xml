@@ -4,6 +4,13 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="sigma-smart-safe-ejb">
 		<jta-data-source>java:jboss/datasources/smartsaveDS</jta-data-source>
+		<class>persistence.BookingDetailsId</class>
+		<class>persistence.Doctor</class>
+		<class>persistence.Equipement</class>
+		<class>persistence.Patient</class>
+		<class>persistence.Responsable</class>
+		<class>persistence.Room</class>
+		<class>persistence.User</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="hibernate.show_sql" value="true" />
