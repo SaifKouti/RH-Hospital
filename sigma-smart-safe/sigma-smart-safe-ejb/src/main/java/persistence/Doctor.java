@@ -20,6 +20,12 @@ public class Doctor extends User implements Serializable {
 	public Doctor() {
 		super();
 	}   
+	
+	public Doctor(String name, String speciality) {
+		super(name);
+		this.speciality = speciality;
+	}
+
 	public String getSpeciality() {
 		return this.speciality;
 	}

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -18,6 +20,7 @@ import javax.persistence.OneToOne;
 public class Room implements Serializable {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int number;
 	private String color;
@@ -34,6 +37,12 @@ public class Room implements Serializable {
 
 	public Room() {
 		super();
+	}
+
+	public Room(int number, String color) {
+		super();
+		this.number = number;
+		this.color = color;
 	}
 
 	public int getId() {

@@ -3,7 +3,9 @@ package persistence;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,11 +26,11 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	
-	@OneToOne(mappedBy="patient")
+
+	@OneToOne(mappedBy = "patient")
 	private Room patientsRoom;
-	
-	@OneToMany(mappedBy="supervisor")
+
+	@OneToMany(mappedBy = "supervisor", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	private List<Room> supervisedRooms;
 	private static final long serialVersionUID = 1L;
 
@@ -73,6 +75,11 @@ public class User implements Serializable {
 		this.supervisedRooms = supervisedRooms;
 	}
 
-	
+	public void linkRoomsToThisUser(List<Room> rooms) {
+		this.supervisedRooms = rooms;
+		for (Room r : rooms) {
+			r.setSupervisor(this);
+		}
+	}
 
 }

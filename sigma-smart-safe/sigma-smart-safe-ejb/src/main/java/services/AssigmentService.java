@@ -1,5 +1,8 @@
 package services;
 
+import java.util.List;
+
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import persistence.Room;
@@ -10,24 +13,42 @@ import persistence.User;
  */
 @Stateless
 public class AssigmentService implements AssigmentServiceRemote, AssigmentServiceLocal {
+	@EJB
+	private BasicOpsLocal basicOpsLocal;
 
-    /**
-     * Default constructor. 
-     */
-    public AssigmentService() {
-        // TODO Auto-generated constructor stub
-    }
+	@EJB
+	private ReportingServiceLocal reportingServiceLocal;
+
+	/**
+	 * Default constructor.
+	 */
+	public AssigmentService() {
+	}
 
 	@Override
 	public void assignPatientToRoom(User patient, Room room) {
-		// TODO Auto-generated method stub
-		
+		room.setPatient(patient);
+		basicOpsLocal.saveOrUpdateRoom(room);
+
 	}
 
 	@Override
 	public void assignSupervisorToRoom(User supervisor, Room room) {
-		// TODO Auto-generated method stub
-		
+		room.setSupervisor(supervisor);
+
+		basicOpsLocal.saveOrUpdateRoom(room);
+	}
+
+	@Override
+	public void assingRoomsToSupervise(List<Room> rooms, User superviser) {
+
+		List<Room> oldRooms = reportingServiceLocal.findRoomsBySupervisor(superviser.getId());
+		for (Room r : rooms) {
+			oldRooms.add(r);
+		}
+		superviser.linkRoomsToThisUser(oldRooms);
+
+		basicOpsLocal.updateUser(superviser);
 	}
 
 }

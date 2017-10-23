@@ -1,5 +1,7 @@
 package services;
 
+import java.util.List;
+
 import javax.ejb.Local;
 
 import persistence.Equipement;
@@ -15,4 +17,6 @@ public interface ReportingServiceLocal {
 	Equipement findTheMostRequestedEquipement();
 
 	Room findTheAkalMostaamalaGhorfa();
+	
+	List<Room> findRoomsBySupervisor(int id);
 }

@@ -26,7 +26,7 @@ public class BookingService implements BookingServiceRemote, BookingServiceLocal
 
 	@Override
 	public void bookEquipement(Equipement equipement, Room room, Date startDate, int nbDays) {
-		BookinkDetails bookinkDetails = new BookinkDetails(startDate, nbDays, equipement, room);
+		BookinkDetails bookinkDetails = new BookinkDetails(startDate, nbDays, entityManager.merge(equipement), room);
 
 		entityManager.persist(bookinkDetails);
 	}

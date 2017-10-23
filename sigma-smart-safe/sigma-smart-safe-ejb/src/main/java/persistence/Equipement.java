@@ -16,6 +16,7 @@ public class Equipement implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	
@@ -26,6 +27,12 @@ public class Equipement implements Serializable {
 	public Equipement() {
 		super();
 	}   
+	
+	public Equipement(String name) {
+		super();
+		this.name = name;
+	}
+
 	public int getId() {
 		return this.id;
 	}

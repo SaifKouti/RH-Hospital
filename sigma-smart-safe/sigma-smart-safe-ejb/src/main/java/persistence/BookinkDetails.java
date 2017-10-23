@@ -3,6 +3,7 @@ package persistence;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -21,7 +22,7 @@ public class BookinkDetails implements Serializable {
 	private Date startDate;
 	private int nbDate;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "equipementId", referencedColumnName = "id", insertable = false, updatable = false)
 	private Equipement equipement;
 

@@ -1,5 +1,7 @@
 package services;
 
+import java.util.List;
+
 import javax.ejb.Remote;
 
 import persistence.Equipement;
@@ -15,5 +17,7 @@ public interface ReportingServiceRemote {
 	Equipement findTheMostRequestedEquipement();
 
 	Room findTheAkalMostaamalaGhorfa();
+
+	List<Room> findRoomsBySupervisor(int id);
 
 }

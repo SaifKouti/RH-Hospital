@@ -1,6 +1,11 @@
 package services;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import persistence.Equipement;
 import persistence.Room;
@@ -11,6 +16,8 @@ import persistence.TypeOfUser;
  */
 @Stateless
 public class ReportingService implements ReportingServiceRemote, ReportingServiceLocal {
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	/**
 	 * Default constructor.
@@ -41,6 +48,15 @@ public class ReportingService implements ReportingServiceRemote, ReportingServic
 	public Room findTheAkalMostaamalaGhorfa() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Room> findRoomsBySupervisor(int id) {
+		String jpql = "SELECT z FROM Room z WHERE z.supervisor.id=:param";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("param", id);
+
+		return query.getResultList();
 	}
 
 }
