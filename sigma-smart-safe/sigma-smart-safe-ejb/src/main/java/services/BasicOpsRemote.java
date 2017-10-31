@@ -1,9 +1,11 @@
 package services;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Remote;
 
+import persistence.BookingDetails;
 import persistence.Equipement;
 import persistence.Room;
 import persistence.User;
@@ -29,5 +31,9 @@ public interface BasicOpsRemote {
 	void saveOrUpdateEqipement(Equipement equipement);
 
 	Equipement findEquipementById(int id);
+
+	void saveOrUpdateBookinkDetails(BookingDetails bookingDetails);
+
+	BookingDetails findBookinkDetailsById(int equipementId, int roomId, Date dateOfBooking);
 
 }

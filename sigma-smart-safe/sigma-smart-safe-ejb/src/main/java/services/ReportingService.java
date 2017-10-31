@@ -2,6 +2,7 @@ package services;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,24 +19,52 @@ import persistence.TypeOfUser;
 public class ReportingService implements ReportingServiceRemote, ReportingServiceLocal {
 	@PersistenceContext
 	private EntityManager entityManager;
+	@EJB
+	private BasicOpsLocal basicOpsLocal;
 
 	/**
 	 * Default constructor.
 	 */
 	public ReportingService() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public int findNumberOf(TypeOfUser typeOfUser) {
-		// TODO Auto-generated method stub
-		return 0;
+	public long findNumberOf(TypeOfUser typeOfUser) {
+		long nb = 0;
+		switch (typeOfUser) {
+		case DOCTOUR:
+			String jpql = "SELECT COUNT(u)   FROM Doctor u ";
+			Query query = entityManager.createQuery(jpql);
+
+			nb = (long) query.getSingleResult();
+			break;
+		case KAWED:
+			String jpql2 = "SELECT COUNT(u)   FROM Responsable u ";
+			Query query2 = entityManager.createQuery(jpql2);
+
+			nb = (long) query2.getSingleResult();
+			break;
+		case MRIDH:
+			String jpql3 = "SELECT COUNT(u)   FROM Patient u ";
+			Query query3 = entityManager.createQuery(jpql3);
+
+			nb = (long) query3.getSingleResult();
+			break;
+
+		default:
+			break;
+		}
+
+		return nb;
+
 	}
 
 	@Override
-	public int findNbEmptyRooms() {
-		// TODO Auto-generated method stub
-		return 0;
+	public long findNbEmptyRooms() {
+		String jpql = "SELECT COUNT(z)FROM Room z WHERE z.patient IS NULL";
+		Query query = entityManager.createQuery(jpql);
+
+		return (long) query.getSingleResult();
 	}
 
 	@Override

@@ -6,8 +6,12 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * Entity implementation class for Entity: BookinkDetails
@@ -15,12 +19,15 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 
-public class BookinkDetails implements Serializable {
+public class BookingDetails implements Serializable {
 
 	@EmbeddedId
 	private BookingDetailsId bookingDetailsId;
+	@Temporal(TemporalType.DATE)
 	private Date startDate;
 	private int nbDate;
+	@Enumerated(EnumType.STRING)
+	private BookingRequestStatus bookingRequestStatus;
 
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "equipementId", referencedColumnName = "id", insertable = false, updatable = false)
@@ -31,17 +38,18 @@ public class BookinkDetails implements Serializable {
 	private Room room;
 	private static final long serialVersionUID = 1L;
 
-	public BookinkDetails() {
+	public BookingDetails() {
 		super();
 	}
 
-	public BookinkDetails(Date startDate, int nbDate, Equipement equipement, Room room) {
+	public BookingDetails(Date startDate, int nbDate, Equipement equipement, Room room) {
 		super();
 		this.bookingDetailsId = new BookingDetailsId(equipement.getId(), room.getId());
 		this.startDate = startDate;
 		this.nbDate = nbDate;
 		this.equipement = equipement;
 		this.room = room;
+		this.bookingRequestStatus = BookingRequestStatus.NEW;
 	}
 
 	public Date getStartDate() {
@@ -74,6 +82,14 @@ public class BookinkDetails implements Serializable {
 
 	public void setRoom(Room room) {
 		this.room = room;
+	}
+
+	public BookingRequestStatus getBookingRequestStatus() {
+		return bookingRequestStatus;
+	}
+
+	public void setBookingRequestStatus(BookingRequestStatus bookingRequestStatus) {
+		this.bookingRequestStatus = bookingRequestStatus;
 	}
 
 }

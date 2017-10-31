@@ -1,8 +1,11 @@
 package persistence;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Embeddable
 
@@ -10,11 +13,21 @@ import javax.persistence.Embeddable;
 public class BookingDetailsId implements Serializable {
 	private int equipementId;
 	private int roomId;
+	@Temporal(TemporalType.DATE)
+	private Date dateOfBooking;
 
 	public BookingDetailsId(int equipementId, int roomId) {
 		super();
 		this.equipementId = equipementId;
 		this.roomId = roomId;
+		this.dateOfBooking = new Date();
+	}
+
+	public BookingDetailsId(int equipementId, int roomId, Date date) {
+		super();
+		this.equipementId = equipementId;
+		this.roomId = roomId;
+		this.dateOfBooking = date;
 	}
 
 	@Override
@@ -59,6 +72,14 @@ public class BookingDetailsId implements Serializable {
 
 	public void setRoomId(int roomId) {
 		this.roomId = roomId;
+	}
+
+	public Date getDateOfBooking() {
+		return dateOfBooking;
+	}
+
+	public void setDateOfBooking(Date dateOfBooking) {
+		this.dateOfBooking = dateOfBooking;
 	}
 
 }

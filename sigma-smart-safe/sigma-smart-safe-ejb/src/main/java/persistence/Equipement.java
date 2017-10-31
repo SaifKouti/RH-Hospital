@@ -21,7 +21,7 @@ public class Equipement implements Serializable {
 	private String name;
 	
 	@OneToMany(mappedBy="equipement")
-	private List<BookinkDetails> bookinkDetails;
+	private List<BookingDetails> bookingDetails;
 	private static final long serialVersionUID = 1L;
 
 	public Equipement() {
@@ -47,11 +47,11 @@ public class Equipement implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<BookinkDetails> getBookinkDetails() {
-		return bookinkDetails;
+	public List<BookingDetails> getBookinkDetails() {
+		return bookingDetails;
 	}
-	public void setBookinkDetails(List<BookinkDetails> bookinkDetails) {
-		this.bookinkDetails = bookinkDetails;
+	public void setBookinkDetails(List<BookingDetails> bookingDetails) {
+		this.bookingDetails = bookingDetails;
 	}
    
 }

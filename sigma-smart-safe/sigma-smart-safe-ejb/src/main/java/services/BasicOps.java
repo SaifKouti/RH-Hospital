@@ -1,5 +1,6 @@
 package services;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -7,6 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import persistence.BookingDetailsId;
+import persistence.BookingDetails;
 import persistence.Equipement;
 import persistence.Room;
 import persistence.User;
@@ -77,6 +80,16 @@ public class BasicOps implements BasicOpsRemote, BasicOpsLocal {
 	@Override
 	public void saveOrUpdateEqipement(Equipement equipement) {
 		entityManager.merge(equipement);
+	}
+
+	@Override
+	public void saveOrUpdateBookinkDetails(BookingDetails bookingDetails) {
+		entityManager.merge(bookingDetails);
+	}
+
+	@Override
+	public BookingDetails findBookinkDetailsById(int equipementId, int roomId, Date dateOfBooking) {
+		return entityManager.find(BookingDetails.class, new BookingDetailsId(equipementId, roomId, dateOfBooking));
 	}
 
 }

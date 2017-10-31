@@ -32,7 +32,7 @@ public class Room implements Serializable {
 	private User supervisor;
 	
 	@OneToMany(mappedBy="room")
-	private List<BookinkDetails> bookinkDetails;
+	private List<BookingDetails> bookingDetails;
 	private static final long serialVersionUID = 1L;
 
 	public Room() {
@@ -85,12 +85,12 @@ public class Room implements Serializable {
 		this.supervisor = supervisor;
 	}
 
-	public List<BookinkDetails> getBookinkDetails() {
-		return bookinkDetails;
+	public List<BookingDetails> getBookinkDetails() {
+		return bookingDetails;
 	}
 
-	public void setBookinkDetails(List<BookinkDetails> bookinkDetails) {
-		this.bookinkDetails = bookinkDetails;
+	public void setBookinkDetails(List<BookingDetails> bookingDetails) {
+		this.bookingDetails = bookingDetails;
 	}
 
 }

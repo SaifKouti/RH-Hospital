@@ -10,9 +10,9 @@ import persistence.TypeOfUser;
 
 @Remote
 public interface ReportingServiceRemote {
-	int findNumberOf(TypeOfUser typeOfUser);
+	long findNumberOf(TypeOfUser typeOfUser);
 
-	int findNbEmptyRooms();
+	long findNbEmptyRooms();
 
 	Equipement findTheMostRequestedEquipement();
 

@@ -10,13 +10,13 @@ import persistence.TypeOfUser;
 
 @Local
 public interface ReportingServiceLocal {
-	int findNumberOf(TypeOfUser typeOfUser);
+	long findNumberOf(TypeOfUser typeOfUser);
 
-	int findNbEmptyRooms();
+	long findNbEmptyRooms();
 
 	Equipement findTheMostRequestedEquipement();
 
 	Room findTheAkalMostaamalaGhorfa();
-	
+
 	List<Room> findRoomsBySupervisor(int id);
 }
