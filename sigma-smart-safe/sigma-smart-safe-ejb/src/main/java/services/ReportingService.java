@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import persistence.BookingDetails;
 import persistence.Equipement;
 import persistence.Room;
 import persistence.TypeOfUser;
@@ -69,8 +70,13 @@ public class ReportingService implements ReportingServiceRemote, ReportingServic
 
 	@Override
 	public Equipement findTheMostRequestedEquipement() {
-		// TODO Auto-generated method stub
-		return null;
+		Equipement equipement=null;
+		List<BookingDetails> bookingDetails=basicOpsLocal.findAllBookinkDetails();
+		int nbRequest=0;
+		
+		
+		
+		return equipement;
 	}
 
 	@Override

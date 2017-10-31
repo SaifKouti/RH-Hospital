@@ -26,10 +26,19 @@ public class TestBookEquipment {
 		ReportingServiceRemote reportingServiceRemote = (ReportingServiceRemote) context
 				.lookup("sigma-smart-safe-ear/sigma-smart-safe-ejb/ReportingService!services.ReportingServiceRemote");
 
-		Equipement equipement = new Equipement("scanner");
-		
+		Equipement equipement = new Equipement("mkhadda");
+		Equipement equipement2 = basicOpsRemote.findEquipementById(1);
+		Equipement equipement3 = basicOpsRemote.findEquipementById(3);
+
 		Room room = basicOpsRemote.findRoomById(1);
-		
+		Room room2 = basicOpsRemote.findRoomById(2);
+		Room room3 = basicOpsRemote.findRoomById(3);
+
 		bookingServiceRemote.bookEquipement(equipement, room, new Date(), 5);
+		bookingServiceRemote.bookEquipement(equipement, room2, new Date(), 5);
+		bookingServiceRemote.bookEquipement(equipement2, room2, new Date(), 5);
+		bookingServiceRemote.bookEquipement(equipement, room3, new Date(), 5);
+		bookingServiceRemote.bookEquipement(equipement2, room3, new Date(), 5);
+		bookingServiceRemote.bookEquipement(equipement3, room3, new Date(), 5);
 	}
 }

@@ -8,8 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import persistence.BookingDetailsId;
 import persistence.BookingDetails;
+import persistence.BookingDetailsId;
 import persistence.Equipement;
 import persistence.Room;
 import persistence.User;
@@ -90,6 +90,19 @@ public class BasicOps implements BasicOpsRemote, BasicOpsLocal {
 	@Override
 	public BookingDetails findBookinkDetailsById(int equipementId, int roomId, Date dateOfBooking) {
 		return entityManager.find(BookingDetails.class, new BookingDetailsId(equipementId, roomId, dateOfBooking));
+	}
+
+	@Override
+	public List<BookingDetails> findAllBookinkDetails() {
+		String jpql = "SELECT u FROM BookingDetails u";
+		Query query = entityManager.createQuery(jpql);
+		return query.getResultList();
+	}
+
+	@Override
+	public void saveOrUpdateEquipement(Equipement equipement) {
+		entityManager.merge(equipement);
+		
 	}
 
 }

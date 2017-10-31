@@ -29,7 +29,7 @@ public class BookingDetails implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private BookingRequestStatus bookingRequestStatus;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "equipementId", referencedColumnName = "id", insertable = false, updatable = false)
 	private Equipement equipement;
 

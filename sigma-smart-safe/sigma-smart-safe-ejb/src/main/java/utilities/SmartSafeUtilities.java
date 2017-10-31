@@ -7,6 +7,7 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
 import persistence.Doctor;
+import persistence.Equipement;
 import persistence.Patient;
 import persistence.Responsable;
 import persistence.Room;
@@ -46,6 +47,10 @@ public class SmartSafeUtilities {
 		Room room4 = new Room(50, "yellow");
 		Room room5 = new Room(60, "black");
 
+		Equipement equipement = new Equipement("scanner");
+		Equipement equipement2 = new Equipement("radio");
+		Equipement equipement3 = new Equipement("TV");
+
 		basicOpsLocal.addUser(patient);
 		basicOpsLocal.addUser(patient2);
 		basicOpsLocal.addUser(patient3);
@@ -58,6 +63,10 @@ public class SmartSafeUtilities {
 		basicOpsLocal.saveOrUpdateRoom(room3);
 		basicOpsLocal.saveOrUpdateRoom(room2);
 		basicOpsLocal.saveOrUpdateRoom(room);
+
+		basicOpsLocal.saveOrUpdateEqipement(equipement);
+		basicOpsLocal.saveOrUpdateEqipement(equipement2);
+		basicOpsLocal.saveOrUpdateEqipement(equipement3);
 
 	}
 

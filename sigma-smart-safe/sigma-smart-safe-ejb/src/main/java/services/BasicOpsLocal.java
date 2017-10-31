@@ -35,4 +35,6 @@ public interface BasicOpsLocal {
 	void saveOrUpdateBookinkDetails(BookingDetails bookingDetails);
 
 	BookingDetails findBookinkDetailsById(int equipementId, int roomId, Date dateOfBooking);
+
+	List<BookingDetails> findAllBookinkDetails();
 }

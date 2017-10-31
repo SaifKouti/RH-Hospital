@@ -32,7 +32,7 @@ public class BookingService implements BookingServiceRemote, BookingServiceLocal
 	public void bookEquipement(Equipement equipement, Room room, Date startDate, int nbDays) {
 		BookingDetails bookingDetails = new BookingDetails(startDate, nbDays, entityManager.merge(equipement), room);
 
-		entityManager.persist(bookingDetails);
+		entityManager.merge(bookingDetails);
 	}
 
 	@Override
