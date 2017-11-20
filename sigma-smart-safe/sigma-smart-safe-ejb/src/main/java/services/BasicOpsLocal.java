@@ -37,4 +37,6 @@ public interface BasicOpsLocal {
 	BookingDetails findBookinkDetailsById(int equipementId, int roomId, Date dateOfBooking);
 
 	List<BookingDetails> findAllBookinkDetails();
+
+	User login(String login, String password);
 }

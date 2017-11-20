@@ -21,10 +21,12 @@ public class Patient extends User implements Serializable {
 		super();
 	}  
 	
-	public Patient(String name, String numCnam) {
-		super(name);
+
+	public Patient(String name, String numCnam, String login, String password) {
+		super(name, login, password);
 		this.numCnam = numCnam;
 	}
+
 
 	public String getNumCnam() {
 		return this.numCnam;

@@ -102,7 +102,22 @@ public class BasicOps implements BasicOpsRemote, BasicOpsLocal {
 	@Override
 	public void saveOrUpdateEquipement(Equipement equipement) {
 		entityManager.merge(equipement);
-		
+
+	}
+
+	@Override
+	public User login(String login, String password) {
+		User user = null;
+		String jpql = "SELECT u FROM User u WHERE u.login=:login AND u.password=:password";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("login", login);
+		query.setParameter("password", password);
+		try {
+			user = (User) query.getSingleResult();
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		return user;
 	}
 
 }

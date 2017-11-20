@@ -27,19 +27,18 @@ public class SmartSafeUtilities {
 	 * Default constructor.
 	 */
 	public SmartSafeUtilities() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@PostConstruct
 	public void init() {
-		Patient patient = new Patient("azmi", "123MT");
-		Patient patient2 = new Patient("nada", "129FT");
-		Patient patient3 = new Patient("kouti", "605MT");
+		Patient patient = new Patient("azmi", "123MT", "a", "a");
+		Patient patient2 = new Patient("nada", "129FT", "n", "n");
+		Patient patient3 = new Patient("kouti", "605MT", "k", "k");
 
-		Doctor doctor = new Doctor("sliman", "psychologist");
+		Doctor doctor = new Doctor("sliman", "psychologist", "s", "s");
 
-		Responsable responsable = new Responsable("khalil", "louta");
-		Responsable responsable2 = new Responsable("moufida", "elfoo9");
+		Responsable responsable = new Responsable("khalil", "louta", "kh", "kh");
+		Responsable responsable2 = new Responsable("moufida", "elfoo9", "mou", "mou");
 
 		Room room = new Room(20, "red");
 		Room room2 = new Room(30, "green");

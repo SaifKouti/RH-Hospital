@@ -37,4 +37,6 @@ public interface BasicOpsRemote {
 	BookingDetails findBookinkDetailsById(int equipementId, int roomId, Date dateOfBooking);
 
 	void saveOrUpdateEquipement(Equipement equipement);
+
+	User login(String login, String password);
 }

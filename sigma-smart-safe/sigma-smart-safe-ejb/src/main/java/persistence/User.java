@@ -26,6 +26,8 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
+	private String login;
+	private String password;
 
 	@OneToOne(mappedBy = "patient")
 	private Room patientsRoom;
@@ -38,10 +40,16 @@ public class User implements Serializable {
 		super();
 	}
 
-	public User(String name) {
+	
+
+	public User(String name, String login, String password) {
 		super();
 		this.name = name;
+		this.login = login;
+		this.password = password;
 	}
+
+
 
 	public int getId() {
 		return this.id;
@@ -80,6 +88,26 @@ public class User implements Serializable {
 		for (Room r : rooms) {
 			r.setSupervisor(this);
 		}
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }
