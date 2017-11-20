@@ -120,4 +120,14 @@ public class BasicOps implements BasicOpsRemote, BasicOpsLocal {
 		return user;
 	}
 
+	@Override
+	public List<Room> findAllRooms() {
+		return entityManager.createQuery("SELECT r FROM Room r").getResultList();
+	}
+
+	@Override
+	public List<Equipement> findEquipements() {
+		return entityManager.createQuery("SELECT r FROM Equipement r").getResultList();
+	}
+
 }

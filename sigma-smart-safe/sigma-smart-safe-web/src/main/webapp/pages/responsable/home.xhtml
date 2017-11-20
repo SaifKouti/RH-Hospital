@@ -5,6 +5,11 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head></h:head>
-<body>hi Mr/Ms : #{identity.user.name}
+<body>
+	hi Mr/Ms : #{identity.user.name}
+	<br />
+	<h:form>
+		<h:commandLink action="listRooms" value="list of rooms" />
+	</h:form>
 </body>
 </html>

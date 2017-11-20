@@ -39,4 +39,8 @@ public interface BasicOpsLocal {
 	List<BookingDetails> findAllBookinkDetails();
 
 	User login(String login, String password);
+
+	List<Room> findAllRooms();
+
+	List<Equipement> findEquipements();
 }

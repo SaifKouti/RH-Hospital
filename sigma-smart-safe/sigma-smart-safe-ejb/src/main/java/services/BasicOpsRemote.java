@@ -39,4 +39,8 @@ public interface BasicOpsRemote {
 	void saveOrUpdateEquipement(Equipement equipement);
 
 	User login(String login, String password);
+	
+	List<Room> findAllRooms();
+	
+	List<Equipement> findEquipements();
 }
