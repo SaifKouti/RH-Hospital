@@ -31,7 +31,7 @@ public class BasicOps implements BasicOpsRemote, BasicOpsLocal {
 
 	@Override
 	public void addUser(User user) {
-		entityManager.persist(user);
+		entityManager.merge(user);
 
 	}
 
@@ -47,7 +47,7 @@ public class BasicOps implements BasicOpsRemote, BasicOpsLocal {
 
 	@Override
 	public void deleteUser(User user) {
-		entityManager.remove(user);
+		entityManager.remove(entityManager.merge(user));
 	}
 
 	@Override

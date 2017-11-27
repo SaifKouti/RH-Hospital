@@ -70,12 +70,10 @@ public class ReportingService implements ReportingServiceRemote, ReportingServic
 
 	@Override
 	public Equipement findTheMostRequestedEquipement() {
-		Equipement equipement=null;
-		List<BookingDetails> bookingDetails=basicOpsLocal.findAllBookinkDetails();
-		int nbRequest=0;
-		
-		
-		
+		Equipement equipement = null;
+		List<BookingDetails> bookingDetails = basicOpsLocal.findAllBookinkDetails();
+		int nbRequest = 0;
+
 		return equipement;
 	}
 
@@ -90,6 +88,14 @@ public class ReportingService implements ReportingServiceRemote, ReportingServic
 		String jpql = "SELECT z FROM Room z WHERE z.supervisor.id=:param";
 		Query query = entityManager.createQuery(jpql);
 		query.setParameter("param", id);
+
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Room> findEmptyRooms() {
+		String jpql = "SELECT z FROM Room z WHERE z.patient IS NULL";
+		Query query = entityManager.createQuery(jpql);
 
 		return query.getResultList();
 	}

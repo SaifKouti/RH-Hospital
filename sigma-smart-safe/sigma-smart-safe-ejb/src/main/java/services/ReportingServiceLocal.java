@@ -19,4 +19,8 @@ public interface ReportingServiceLocal {
 	Room findTheAkalMostaamalaGhorfa();
 
 	List<Room> findRoomsBySupervisor(int id);
+	
+	List<Room> findEmptyRooms();
+	
+	
 }
