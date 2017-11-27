@@ -6,8 +6,13 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	template="/WEB-INF/template/template.xhtml">
 
-<ui:define name="title">a</ui:define>
-<ui:define name="content">a</ui:define>
+	<ui:define name="title">a</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h:commandButton action="#{userBean.doAssignPatientToRoom()}"
+				value="" />
+		</h:form>
+	</ui:define>
 
 
 </ui:composition>

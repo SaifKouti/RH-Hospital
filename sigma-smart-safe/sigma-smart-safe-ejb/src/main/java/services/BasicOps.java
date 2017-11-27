@@ -135,4 +135,10 @@ public class BasicOps implements BasicOpsRemote, BasicOpsLocal {
 	public List<Patient> findAllPatients() {
 		return entityManager.createQuery("SELECT r FROM Patient r", Patient.class).getResultList();
 	}
+
+	@Override
+	public Room findRoomByCodeRoom(String codeRoom) {
+		return (Room) entityManager.createQuery("SELECT r FROM Room r WHERE r.codeRoom=:p").setParameter("p", codeRoom)
+				.getSingleResult();
+	}
 }

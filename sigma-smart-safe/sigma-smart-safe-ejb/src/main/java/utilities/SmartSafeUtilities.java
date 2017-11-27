@@ -40,11 +40,11 @@ public class SmartSafeUtilities {
 		Responsable responsable = new Responsable("khalil", "louta", "kh", "kh");
 		Responsable responsable2 = new Responsable("moufida", "elfoo9", "mou", "mou");
 
-		Room room = new Room(20, "red");
-		Room room2 = new Room(30, "green");
-		Room room3 = new Room(40, "blue");
-		Room room4 = new Room(50, "yellow");
-		Room room5 = new Room(60, "black");
+		Room room = new Room(20, "red","A20");
+		Room room2 = new Room(30, "green","A30");
+		Room room3 = new Room(40, "blue","A40");
+		Room room4 = new Room(50, "yellow","A50");
+		Room room5 = new Room(60, "black","A60");
 
 		Equipement equipement = new Equipement("scanner");
 		Equipement equipement2 = new Equipement("radio");

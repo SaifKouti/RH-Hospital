@@ -10,6 +10,7 @@ import javax.faces.bean.ViewScoped;
 
 import persistence.Patient;
 import persistence.Room;
+import services.AssigmentServiceLocal;
 import services.BasicOpsLocal;
 import services.ReportingServiceLocal;
 
@@ -26,6 +27,8 @@ public class UserBean {
 	private BasicOpsLocal basicOpsLocal;
 	@EJB
 	private ReportingServiceLocal reportingServiceLocal;
+	@EJB
+	private AssigmentServiceLocal assigmentServiceLocal;
 
 	@PostConstruct
 	private void init() {
@@ -36,6 +39,9 @@ public class UserBean {
 	public void doShowPatientsList() {
 		showPatientsList = true;
 	}
+	public Room dofindRoomByCode(String codeRoom) {
+		return basicOpsLocal.findRoomByCodeRoom(codeRoom);
+	}
 
 	public void doShowNewPatient() {
 		patient = new Patient();
@@ -43,7 +49,8 @@ public class UserBean {
 	}
 
 	public void doAssignPatientToRoom() {
-		// TODO
+		assigmentServiceLocal.assignPatientToRoom(patient, roomSelected);
+		init();
 	}
 
 	public void doSaveOrUpdatePatient() {

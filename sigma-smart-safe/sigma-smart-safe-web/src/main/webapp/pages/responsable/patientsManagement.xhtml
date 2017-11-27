@@ -40,14 +40,11 @@
 				<h:outputText value="num CNAM" />
 				<h:inputText value="#{userBean.patient.numCnam}" />
 				<h:outputText value="available rooms" />
-				<h:selectOneMenu value="#{userBean.roomSelected}">
+				<h:selectOneMenu value="#{userBean.roomSelected}" converter="rc">
 					<f:selectItem itemLabel="please select" />
 					<f:selectItems value="#{userBean.emptyRooms}" var="r"
-						itemLabel="#{r.number}" itemValue="#{r}" />
-
+						itemLabel="#{r.codeRoom}" itemValue="#{r}" />
 				</h:selectOneMenu>
-
-
 				<h:commandButton action="#{userBean.doSaveOrUpdatePatient()}"
 					value="SaveOrUpdate" />
 				<h:commandButton action="#{userBean.doDeletePatient()}"
@@ -56,7 +53,6 @@
 				<h:commandButton action="#{userBean.doAssignPatientToRoom()}"
 					value="assign to room" />
 			</h:panelGrid>
-
 
 		</h:form>
 

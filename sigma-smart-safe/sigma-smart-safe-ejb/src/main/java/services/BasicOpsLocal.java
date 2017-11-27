@@ -46,4 +46,6 @@ public interface BasicOpsLocal {
 	List<Equipement> findEquipements();
 
 	List<Patient> findAllPatients();
+
+	Room findRoomByCodeRoom(String codeRoom);
 }
