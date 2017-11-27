@@ -7,6 +7,7 @@ import javax.ejb.Local;
 
 import persistence.BookingDetails;
 import persistence.Equipement;
+import persistence.Patient;
 import persistence.Room;
 import persistence.User;
 
@@ -43,4 +44,6 @@ public interface BasicOpsLocal {
 	List<Room> findAllRooms();
 
 	List<Equipement> findEquipements();
+
+	List<Patient> findAllPatients();
 }

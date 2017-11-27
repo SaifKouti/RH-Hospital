@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import persistence.BookingDetails;
 import persistence.BookingDetailsId;
 import persistence.Equipement;
+import persistence.Patient;
 import persistence.Room;
 import persistence.User;
 
@@ -130,4 +131,8 @@ public class BasicOps implements BasicOpsRemote, BasicOpsLocal {
 		return entityManager.createQuery("SELECT r FROM Equipement r").getResultList();
 	}
 
+	@Override
+	public List<Patient> findAllPatients() {
+		return entityManager.createQuery("SELECT r FROM Patient r", Patient.class).getResultList();
+	}
 }

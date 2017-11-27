@@ -10,7 +10,6 @@ import javax.faces.bean.ViewScoped;
 
 import persistence.Patient;
 import persistence.Room;
-import persistence.User;
 import services.BasicOpsLocal;
 import services.ReportingServiceLocal;
 
@@ -31,15 +30,7 @@ public class UserBean {
 	@PostConstruct
 	private void init() {
 		emptyRooms = reportingServiceLocal.findEmptyRooms();
-		List<User> users = basicOpsLocal.findAllUsers();
-		for (User u : users) {
-			if (u instanceof Patient) {
-				if (!patients.contains(u)) {
-					patients.add((Patient) u);
-				}
-			}
-
-		}
+		patients = basicOpsLocal.findAllPatients();
 	}
 
 	public void doShowPatientsList() {
@@ -50,18 +41,20 @@ public class UserBean {
 		patient = new Patient();
 		showPatientsList = true;
 	}
+
 	public void doAssignPatientToRoom() {
-		//TODO
+		// TODO
 	}
+
 	public void doSaveOrUpdatePatient() {
 		basicOpsLocal.addUser(patient);
 		showPatientsList = false;
+		init();
 	}
 
 	public void doDeletePatient() {
 		basicOpsLocal.deleteUser(patient);
 		showPatientsList = false;
-		patients.remove(patient);
 		init();
 	}
 
